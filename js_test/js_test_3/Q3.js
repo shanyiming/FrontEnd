@@ -3,7 +3,7 @@ const matchList = document.getElementById('match-list');
 
 const states = ['CA', 'AZ', 'WA', 'NY', 'OR', 'TX', 'TS', 'ML', 'MX'];
 
-// FIlter states
+// Filter states
 const searchStates = searchText => {
  // Get matches to current text input
  let matches = states.filter(state => {

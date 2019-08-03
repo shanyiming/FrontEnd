@@ -1,49 +1,47 @@
-// const endpoint = 'https://swapi.co/api/';
-// const starWarData = [];
-// fetch(endpoint).then(response => response.json())
-// .then(console.log);
-const search = document.getElementById('search');
-const matchList = document.getElementById('match-list');
-let states;
 
-// Get states
-const getStates = async () => {
- const res = await fetch('../data/states.json');
- states = await res.json();
-};
+fetch('https://swapi.co/api/people')
+.then(response => response.json())
+.then(function (data) {
+	let starWarData = [];
+	for (let i = 1; i < data.results.length; i++) {
+  	starWarData.push(data.results[i].name);
+  }
 
-// FIlter states
-const searchStates = searchText => {
- // Get matches to current text input
- let matches = states.filter(state => {
-  const regex = new RegExp(`^${searchText}`, 'gi');
-  return state.name.match(regex) || state.abbr.match(regex);
- });
+  const search = document.getElementById('search');
+  const matchList = document.getElementById('match-list');
 
- // Clear when input or matches are empty
- if (searchText.length === 0) {
-  matches = [];
-  matchList.innerHTML = '';
- }
+  // Filter
+  const searchStarWarData = searchText => {
+   // Get matches to current text input
+   let matches = starWarData.filter(data => {
+    const regex = new RegExp(`${searchText}`, 'gi');
+    return data.match(regex);
+   });
 
- outputHtml(matches);
-};
+   // Clear when input or matches are empty
+   if (searchText.length === 0) {
+    matches = [];
+    matchList.innerHTML = '';
+   }
 
-// Show results in HTML
-const outputHtml = matches => {
- if (matches.length > 0) {
-  const html = matches
-   .map(
-    match => `<div class="card card-body mb-1">
-    <h4>${match.name} (${match.abbr}) 
-    <span class="text-primary">${match.capital}</span></h4>
-    <small>Lat: ${match.lat} / Long: ${match.long}</small>
-   </div>`
-   )
-   .join('');
-  matchList.innerHTML = html;
- }
-};
+   outputHtml(matches);
+  };
 
-window.addEventListener('DOMContentLoaded', getStates);
-search.addEventListener('input', () => searchStates(search.value));
+  // Show results in HTML
+  const outputHtml = matches => {
+   if (matches.length > 0) {
+    const html = matches
+     .map(
+      match => `<div class="options">
+      <h4>${match}</h4>
+     </div>`
+     )
+     .join('');
+    matchList.innerHTML = html;
+   }
+  };
+
+  search.addEventListener('input', () => searchStarWarData(search.value));
+
+
+}); 
