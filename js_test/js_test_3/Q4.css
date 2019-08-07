@@ -1,0 +1,36 @@
+html,body {
+    height: 100%;
+    width: 100%;
+  }
+  
+  body {
+    width: 100%;
+    text-align: center;
+  }
+  
+  h1 {
+    padding-top: 30px;
+  }
+  
+  section {
+    padding-top: 15px;
+  }
+  
+  button {
+    width: 120px;
+    height: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  div {
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+    background-color: green;
+  }
+  
+  .mole {
+    background-image: url("https://media2.fdncms.com/stranger/imager/u/large/31949381/1536255198-gettyimages-dv1630012.jpg");
+    background-size: cover;
+  }
