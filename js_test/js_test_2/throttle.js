@@ -16,7 +16,7 @@ const testFunc = ()=> {
     console.log('Go Dodgers!');
 }
 
-const throttledTestFunc = throttle(testFunc, 5);
+const throttledTestFunc = throttle(testFunc, 5000);
 
 //set limit to 5 ms, called function 10,000 times, only 2 were excuted. (result depending on performance.)
 for (let i = 0; i < 10000; i++) {
